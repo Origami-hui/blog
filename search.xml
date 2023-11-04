@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>words</title>
+    <url>/2023/11/03/words/</url>
+    <content><![CDATA[<span style="font-size: 15px;">
+
+<h3 id="紧急制动博弈"><a href="#紧急制动博弈" class="headerlink" title="紧急制动博弈"></a>紧急制动博弈</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<span id="more"></span>
+
+<h3 id="紧急制动博弈22"><a href="#紧急制动博弈22" class="headerlink" title="紧急制动博弈22"></a>紧急制动博弈22</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+</span>]]></content>
+      <categories>
+        <category>words</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>words1</title>
+    <url>/2023/11/03/words1/</url>
+    <content><![CDATA[<span style="font-size: 15px;">
+
+<h3 id="紧急制动博弈"><a href="#紧急制动博弈" class="headerlink" title="紧急制动博弈"></a>紧急制动博弈</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<span id="more"></span>
+
+<p>1</p>
+<h3 id="紧急制动博弈22"><a href="#紧急制动博弈22" class="headerlink" title="紧急制动博弈22"></a>紧急制动博弈22</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">build_rectangle</span>(<span class="params">X_list,Y_list, dem = <span class="number">4</span></span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据前四个标签坐标的值（当前可见度为10个点），矫正当前构建矩形</span></span><br><span class="line">    <span class="comment"># 返回构建好的矩形四点坐标值</span></span><br><span class="line">    X_copy = X_list.copy()</span><br><span class="line">    Y_copy = Y_list.copy()</span><br><span class="line"></span><br><span class="line">    <span class="comment">#polygon = []</span></span><br><span class="line">    re_x,re_y = [],[]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(dem, <span class="built_in">len</span>(X_copy))):</span><br><span class="line"></span><br><span class="line">        <span class="comment">#polygon.append([X_copy[i][-1], Y_copy[i][-1]])</span></span><br><span class="line">        re_x.append(X_copy[i][-<span class="number">1</span>])</span><br><span class="line">        re_y.append(Y_copy[i][-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># re_x,re_y = coordinateCorrection(polygon)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> re_x,re_y</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ServerEndpoint(&quot;/&quot;)</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSocketServer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PlayerInfoServiceImpl playerInfoServiceImpl=<span class="keyword">new</span> <span class="title class_">PlayerInfoServiceImpl</span>();</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//收到消息时执行</span></span><br><span class="line">    <span class="meta">@OnMessage</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onMessage</span><span class="params">(String message, Session session)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;从客户端收到的消息：&quot;</span> + message);</span><br><span class="line">        playerInfoServiceImpl.saveInfoService(message);</span><br><span class="line">        sendMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MsgTypeConstant.ALL_PLAYER_INFO,</span><br><span class="line">                JSONArray.toJSONString(playerInfoServiceImpl.getPlayInfoList())));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(Message message)</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">        <span class="built_in">this</span>.session.getAsyncRemote().sendText(JSONArray.toJSONString(message));</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+</span>]]></content>
+      <categories>
+        <category>words2</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>欢迎光临</title>
+    <url>/index.html</url>
+    <content><![CDATA[<span style="font-size: 15px;">
+
+<h3 id="这里有什么"><a href="#这里有什么" class="headerlink" title="这里有什么"></a>这里有什么</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<h3 id="紧急制动博弈1"><a href="#紧急制动博弈1" class="headerlink" title="紧急制动博弈1"></a>紧急制动博弈1</h3><br/>
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<img style="width:600px;" src="./images/2.jpg">
+<div style="color: #999">星河乐章</div>
+
+</span>]]></content>
+  </entry>
+  <entry>
+    <title>about</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<span style="font-size: 14px;">
+
+<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
+<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<img style="width:600px;" src="2.jpg">
+<div style="color: #999">星河乐章</div>
+
+</span>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/pices/index.html</url>
+    <content><![CDATA[<span style="font-size: 15px;">
+
+<img style="width:300px;" src="1.jpg">
+<div style="color: #999; text-align: center;">时砾逐光</div>
+
+<br/>
+
+<img style="width:600px;" src="2.jpg">
+<div style="color: #999; text-align: center;" >星河乐章</div>
+
+</span>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[<p>这里是分类页</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>words</title>
+    <url>/words/index.html</url>
+    <content><![CDATA[<p>这里显示的内容无效，改页显示_post下的内容</p>
+]]></content>
+  </entry>
+</search>
