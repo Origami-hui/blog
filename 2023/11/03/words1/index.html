@@ -19,27 +19,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="紧急制动博弈  两辆汽车必须要同时决定如何应对道路上的突然障碍物。 这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：">
+    <meta name="description" content="Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 Souls-like Part 155 Lock On Logic - Unity Tutorial 来自己制作镜头和镜头切换了，这里就大">
 <meta property="og:type" content="article">
-<meta property="og:title" content="words1">
+<meta property="og:title" content="自制锁定怪物镜头与自由镜头丝滑切换">
 <meta property="og:url" content="http://example.com/2023/11/03/words1/index.html">
 <meta property="og:site_name" content="吴咏辉">
-<meta property="og:description" content="紧急制动博弈  两辆汽车必须要同时决定如何应对道路上的突然障碍物。 这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：">
+<meta property="og:description" content="Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 Souls-like Part 155 Lock On Logic - Unity Tutorial 来自己制作镜头和镜头切换了，这里就大">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/postImg/unity1.png">
+<meta property="og:image" content="http://example.com/postImg/unity2.png">
+<meta property="og:image" content="http://example.com/postImg/c04ebebbce334c59b24cb8cc6d3301bb.gif">
 <meta property="article:published_time" content="2023-11-03T03:52:37.000Z">
-<meta property="article:modified_time" content="2023-11-04T07:48:58.145Z">
+<meta property="article:modified_time" content="2023-11-04T15:17:34.319Z">
 <meta property="article:author" content="Origami-hui">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/postImg/unity1.png">
 
 
 <link rel="canonical" href="http://example.com/2023/11/03/words1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/03/words1/","path":"2023/11/03/words1/","title":"words1"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/03/words1/","path":"2023/11/03/words1/","title":"自制锁定怪物镜头与自由镜头丝滑切换"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>words1 | 吴咏辉</title>
+<title>自制锁定怪物镜头与自由镜头丝滑切换 | 吴咏辉</title>
   
 
 
@@ -88,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-文章"><a href="/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画作"><a href="/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画作</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-文章"><a href="/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -126,7 +130,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -139,7 +143,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A7%E6%80%A5%E5%88%B6%E5%8A%A8%E5%8D%9A%E5%BC%88"><span class="nav-number">1.</span> <span class="nav-text">紧急制动博弈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A7%E6%80%A5%E5%88%B6%E5%8A%A8%E5%8D%9A%E5%BC%8822"><span class="nav-number">2.</span> <span class="nav-text">紧急制动博弈22</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,12 +202,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="words1 | 吴咏辉">
+      <meta itemprop="name" content="自制锁定怪物镜头与自由镜头丝滑切换 | 吴咏辉">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          words1
+          自制锁定怪物镜头与自由镜头丝滑切换
         </h1>
 
         <div class="post-meta-container">
@@ -222,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-04 15:48:58" itemprop="dateModified" datetime="2023-11-04T15:48:58+08:00">2023-11-04</time>
+      <time title="修改时间：2023-11-04 23:17:34" itemprop="dateModified" datetime="2023-11-04T23:17:34+08:00">2023-11-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -230,7 +233,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/words2/" itemprop="url" rel="index"><span itemprop="name">words2</span></a>
+          <a href="/categories/Unity%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Unity游戏开发</span></a>
         </span>
     </span>
 
@@ -241,14 +244,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>4.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -260,22 +263,84 @@
     
     <div class="post-body" itemprop="articleBody"><span style="font-size: 15px;">
 
-<h3 id="紧急制动博弈"><a href="#紧急制动博弈" class="headerlink" title="紧急制动博弈"></a>紧急制动博弈</h3><br/>
-
-<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
-<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
+<p>Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ud3_tderJOQ">Souls-like Part 155 Lock On Logic - Unity Tutorial</a> 来自己制作镜头和镜头切换了，这里就大概记录一下吧：</p>
 <span id="more"></span>
 
-<p>1</p>
-<h3 id="紧急制动博弈22"><a href="#紧急制动博弈22" class="headerlink" title="紧急制动博弈22"></a>紧急制动博弈22</h3><br/>
+<ul>
+<li>创建空对象CameraHolder，将他的位置放在角色的后脑勺，并创建子对象Pivot（意思是中心点，转动中枢），将主相机放在Pivot内，调整相机的位置使得相机能照到角色全身。</li>
+</ul>
+<p><img src="/./postImg/unity1.png" alt="600px"></p>
+<ul>
+<li>创建Camera Manager脚本，并挂载到Camera Holder处，以下是定义的一些参数。</li>
+</ul>
+<p><img src="/./postImg/unity2.png" alt="300px"></p>
+<div style="color: #999; text-align: center;" >CameraHolder挂载脚本及其参数</div>
 
-<p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
-<p>这个博弈的参与者是两位司机，他们有相同的行动可供选择：留在自己的车道上或向右转弯。这个博弈的信息结构非常简单：两个玩家需要同时做出决定，而不知道另一个玩家的决定（我们称这种设置为同步博弈）。博弈的结果通过一个成本（如图所示）来表示，它可以描述每个玩家的汽车所遭受的损失。将其写成矩阵形式可以表示为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">build_rectangle</span>(<span class="params">X_list,Y_list, dem = <span class="number">4</span></span>):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 根据前四个标签坐标的值（当前可见度为10个点），矫正当前构建矩形</span></span><br><span class="line">    <span class="comment"># 返回构建好的矩形四点坐标值</span></span><br><span class="line">    X_copy = X_list.copy()</span><br><span class="line">    Y_copy = Y_list.copy()</span><br><span class="line"></span><br><span class="line">    <span class="comment">#polygon = []</span></span><br><span class="line">    re_x,re_y = [],[]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(dem, <span class="built_in">len</span>(X_copy))):</span><br><span class="line"></span><br><span class="line">        <span class="comment">#polygon.append([X_copy[i][-1], Y_copy[i][-1]])</span></span><br><span class="line">        re_x.append(X_copy[i][-<span class="number">1</span>])</span><br><span class="line">        re_y.append(Y_copy[i][-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># re_x,re_y = coordinateCorrection(polygon)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> re_x,re_y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>声明的参数和初始化如下：</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Transform targetTransform; <span class="comment">//相机跟随目标（即玩家）</span></span><br><span class="line"><span class="keyword">public</span> Transform lockTarget;  <span class="comment">//相机锁定的目标（即敌人）</span></span><br><span class="line"><span class="keyword">public</span> Transform pivot; <span class="comment">//相机中心点对象</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> followSpeed = <span class="number">0.1f</span>; <span class="comment">//相机跟随速度</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> rotateSpeed = <span class="number">1</span>;  <span class="comment">//相机旋转速度</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> TopClamp = <span class="number">70.0f</span>;  <span class="comment">//相机俯视最大角</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">float</span> BottomClamp = <span class="number">-60.0f</span>;  <span class="comment">//相机仰视最大角</span></span><br><span class="line"><span class="keyword">public</span> Image lockDot;  <span class="comment">//锁定圆点UI</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> isLocked;  <span class="comment">//是否锁定标志</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">float</span> lookAngle;  <span class="comment">//横向角度</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">float</span> pivotAngle;  <span class="comment">//纵向角度</span></span><br><span class="line"><span class="keyword">private</span> Transform _transform;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    _transform = <span class="keyword">this</span>.transform;</span><br><span class="line">    lockDot.enabled = <span class="literal">false</span>;</span><br><span class="line">    isLocked = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编写脚本函数，主要的函数有三个：</li>
+</ul>
+<ol>
+<li>根据鼠标移动让镜头延迟跟随的函数，这部分根据玩家角色位置做个Lerp跟随就可以了：</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Tick</span>(<span class="params"><span class="built_in">float</span> delta</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 相机延迟跟随</span></span><br><span class="line">    Vector3 targetPosition = Vector3.Lerp(_transform.position, targetTransform.position, delta / followSpeed);</span><br><span class="line">    _transform.position = targetPosition;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ServerEndpoint(&quot;/&quot;)</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSocketServer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PlayerInfoServiceImpl playerInfoServiceImpl=<span class="keyword">new</span> <span class="title class_">PlayerInfoServiceImpl</span>();</span><br><span class="line"></span><br><span class="line">  	<span class="comment">//收到消息时执行</span></span><br><span class="line">    <span class="meta">@OnMessage</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onMessage</span><span class="params">(String message, Session session)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;从客户端收到的消息：&quot;</span> + message);</span><br><span class="line">        playerInfoServiceImpl.saveInfoService(message);</span><br><span class="line">        sendMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MsgTypeConstant.ALL_PLAYER_INFO,</span><br><span class="line">                JSONArray.toJSONString(playerInfoServiceImpl.getPlayInfoList())));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(Message message)</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">        <span class="built_in">this</span>.session.getAsyncRemote().sendText(JSONArray.toJSONString(message));</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>镜头转角函数（是实现切换镜头的核心函数，我以自己的理解写了一些注解，仅供参考）：</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HandleRotation</span>(<span class="params"><span class="built_in">float</span> delta, <span class="built_in">float</span> mouseX, <span class="built_in">float</span> mouseY</span>)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (lockTarget == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 无锁定时的转向</span></span><br><span class="line">        lookAngle += mouseX * (delta / rotateSpeed);    <span class="comment">//根据鼠标横向输入转化当前镜头横向角度</span></span><br><span class="line">        pivotAngle += mouseY * (delta / rotateSpeed);   <span class="comment">//根据鼠标纵向输入转化当前镜头纵向角度</span></span><br><span class="line">        pivotAngle = Mathf.Clamp(pivotAngle, BottomClamp, TopClamp);    <span class="comment">//限制纵向角度</span></span><br><span class="line"></span><br><span class="line">        Vector3 euler = Vector3.zero;</span><br><span class="line">        euler.y = lookAngle;</span><br><span class="line">        euler.x = pivotAngle;</span><br><span class="line">        Quaternion targetRotation = Quaternion.Euler(euler);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//让镜头的旋转角赋值为当前所应该转到的横纵角</span></span><br><span class="line">        _transform.rotation = targetRotation;</span><br><span class="line">        pivot.rotation = Quaternion.Lerp(pivot.rotation, targetRotation, delta/ <span class="number">0.25f</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 锁定时转向</span></span><br><span class="line">        Vector3 lockPos = lockTarget.position;</span><br><span class="line">        Vector3 dir = lockPos - _transform.position;</span><br><span class="line">        dir.Normalize();</span><br><span class="line">        dir.y = <span class="number">0</span>;</span><br><span class="line">        Quaternion targetRotation = Quaternion.LookRotation(dir);   <span class="comment">//镜头目标转向为玩家角色到当前锁定目标的向量的横向平面分量</span></span><br><span class="line"></span><br><span class="line">        Vector3 pivotDir = lockPos - pivot.position;</span><br><span class="line">        pivotDir.Normalize();</span><br><span class="line">        Quaternion pivotTargetRotation = Quaternion.LookRotation(pivotDir);</span><br><span class="line">        Vector3 e = pivotTargetRotation.eulerAngles;</span><br><span class="line">        e.y = <span class="number">0</span>;    <span class="comment">//只考虑垂直转向，即pivot指向玩家角色到当前锁定目标的向量的纵向分量</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//让镜头角度和pivot角度线性变化，实现丝滑转换自由镜头和锁定镜头</span></span><br><span class="line">        _transform.rotation = Quaternion.Lerp(_transform.rotation, targetRotation, Time.fixedDeltaTime / <span class="number">0.25f</span>);</span><br><span class="line">        pivot.localEulerAngles = Vector3.Lerp(pivot.localEulerAngles, e, Time.fixedDeltaTime / <span class="number">0.25f</span>);</span><br><span class="line"></span><br><span class="line">        pivotAngle = <span class="number">0</span>;     <span class="comment">//清空当前的纵向角度，使得解锁镜头时镜头不会出现突变</span></span><br><span class="line">        lookAngle = _transform.eulerAngles.y;   <span class="comment">//使读入的镜头横向角度始终为当前角度值，同样是为了使得解锁镜头时镜头不会出现突变</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<ol start="3">
+<li>通过外部按键切换锁定状态函数：</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SwitchLockOnState</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(lockTarget == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 modelOrigin = targetTransform.position;</span><br><span class="line">        Vector3 boxCenter = modelOrigin + targetTransform.transform.forward * <span class="number">6.0f</span>;</span><br><span class="line">        Collider[] cols = Physics.OverlapBox(boxCenter, <span class="keyword">new</span> Vector3(<span class="number">2.0f</span>, <span class="number">2.0f</span>, <span class="number">5f</span>), targetTransform.transform.rotation, LayerMask.GetMask(<span class="string">&quot;Enemy&quot;</span>));</span><br><span class="line">        <span class="keyword">if</span>(cols != <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">foreach</span>(<span class="keyword">var</span> col <span class="keyword">in</span> cols)</span><br><span class="line">            &#123;</span><br><span class="line">                lockTarget = col.gameObject.transform;</span><br><span class="line">                <span class="comment">// lockTarget.position += col.gameObject.GetComponent&lt;CapsuleCollider&gt;().center;</span></span><br><span class="line">                lockDot.enabled = <span class="literal">true</span>;</span><br><span class="line">                isLocked = <span class="literal">true</span>;</span><br><span class="line">                targetTransform.GetComponentInParent&lt;Animator&gt;().SetBool(<span class="string">&quot;isLocked&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        lockTarget = <span class="literal">null</span>;</span><br><span class="line">        lockDot.enabled = <span class="literal">false</span>;</span><br><span class="line">        isLocked = <span class="literal">false</span>;</span><br><span class="line">        targetTransform.GetComponentInParent&lt;Animator&gt;().SetBool(<span class="string">&quot;isLocked&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// print(&quot;镜头锁定！&quot;);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数调用</li>
+</ul>
+<ol>
+<li>Tick与HandleRotation可在你的角色控制器中调用，以官方的ThirdPersonController.cs为例，可以加在原来的CameraRotation函数中，将其结构改为：</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CameraRotation</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// if there is an input and camera position is not fixed</span></span><br><span class="line">    <span class="keyword">if</span> (_input.look.sqrMagnitude &gt;= _threshold &amp;&amp; !LockCameraPosition)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Don&#x27;t multiply mouse input by Time.deltaTime;</span></span><br><span class="line">        <span class="built_in">float</span> deltaTimeMultiplier = IsCurrentDeviceMouse ? <span class="number">1.0f</span> : Time.deltaTime;</span><br><span class="line"></span><br><span class="line">        _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;</span><br><span class="line">        _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    CameraManager.Tick(Time.fixedDeltaTime);</span><br><span class="line">    CameraManager.HandleRotation(Time.fixedDeltaTime, _input.look.x, _input.look.y);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>切换锁定状态函数SwitchLockOnState在任意Update函数调用即可，这里统一结构依旧在ThirdPersonController.cs调用：</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    _hasAnimator = TryGetComponent(<span class="keyword">out</span> _animator);</span><br><span class="line"></span><br><span class="line">    JumpAndGravity();</span><br><span class="line">    GroundedCheck();</span><br><span class="line">    Move();</span><br><span class="line">    SwitchWeapon();</span><br><span class="line">    <span class="comment">//Attack();</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (_input.lockOn)</span><br><span class="line">    &#123;</span><br><span class="line">        CameraManager.SwitchLockOnState();</span><br><span class="line">        _input.lockOn = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大功告成，将对应的物件置入脚本中，就可以使用你定义的锁定键来实现敌人的锁定和解锁啦！</p>
+<p><img src="/./postImg/c04ebebbce334c59b24cb8cc6d3301bb.gif" alt="600px"></p>
+<p>第一次写Unity的学习笔记，希望这个笔记能帮到正在学习Unity的你~</p>
+<hr>
+<p><em><strong>参考连接</strong></em>：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ud3_tderJOQ">Souls-like Part 155 Lock On Logic - Unity Tutorial</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gW411T7yb">[傅老師&#x2F;Unity教學][4&#x2F;27中午更新] DarkSouls複刻經典教程#第一季</a></p>
 </span>
+
+<style>
+    img[alt="300px"]{
+        width:300px;
+    }
+
+    img[alt="400px"]{
+        width:400px;
+    }
+
+    img[alt="500px"]{
+        width:500px;
+    }
+
+    img[alt="600px"]{
+        width:600px;
+    }
+
+    img[alt="800px"]{
+        width:800px;
+    }
+</style>
     </div>
 
     
@@ -288,11 +353,14 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/11/03/words/" rel="prev" title="words">
-                  <i class="fa fa-angle-left"></i> words
+                <a href="/2023/11/03/words/" rel="prev" title="为Unity游戏搭建SpringBoot的服务端实现多人同步">
+                  <i class="fa fa-angle-left"></i> 为Unity游戏搭建SpringBoot的服务端实现多人同步
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/11/04/oc2unity/" rel="next" title="从制作OC形象到导入Unity并让角色动起来">
+                  从制作OC形象到导入Unity并让角色动起来 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -323,13 +391,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">16k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">29 分钟</span>
   </span>
 </div>
 

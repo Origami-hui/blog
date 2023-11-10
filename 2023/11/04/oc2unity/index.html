@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Iron.png">
+  <link rel="mask-icon" href="/images/Iron.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一直想让自己以前设计的oc能变成3d并且让她作为RPG的主角动起来，并且以此为契机熟悉3d建模与游戏开发领域，于是有了标题的这个想法。 这里记录一下新人第一次从Vroid捏OC，导入blender转fbx，以及导入Unity通过修改官方的Third Person Controller来让角色动起来这个过程中所踩的坑，也顺便整理一下这一路的开发思路。这里许多地方都是参考了各路大佬的教程来进行的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从制作OC形象到导入Unity并让角色动起来">
+<meta property="og:url" content="http://example.com/2023/11/04/oc2unity/index.html">
+<meta property="og:site_name" content="吴咏辉">
+<meta property="og:description" content="一直想让自己以前设计的oc能变成3d并且让她作为RPG的主角动起来，并且以此为契机熟悉3d建模与游戏开发领域，于是有了标题的这个想法。 这里记录一下新人第一次从Vroid捏OC，导入blender转fbx，以及导入Unity通过修改官方的Third Person Controller来让角色动起来这个过程中所踩的坑，也顺便整理一下这一路的开发思路。这里许多地方都是参考了各路大佬的教程来进行的，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/postImg/46d330f02ab32c5265d258f124aae2e7.png">
+<meta property="og:image" content="http://example.com/postImg/aa6165cf559d6329bb48b6c5541305cb.png">
+<meta property="og:image" content="http://example.com/postImg/3f133e4a5558bebbe4001873f1f2826d.png">
+<meta property="og:image" content="http://example.com/postImg/6985d1440098811c0a2e0d09aeb4c3cf.png">
+<meta property="og:image" content="http://example.com/postImg/c49f1d17bdd8419251937ca1e38e14c2.png">
+<meta property="og:image" content="http://example.com/postImg/a3eece2ba2c18e4b25266515a7749e95.png">
+<meta property="og:image" content="http://example.com/postImg/e3ddf1cd86b8ee899750fa6f922763b6.png">
+<meta property="og:image" content="http://example.com/postImg/7fce9eac332698ae7aed4a6ecdfae2a8.png">
+<meta property="og:image" content="http://example.com/postImg/8708c476c1a9130148c50705b413246a.png">
+<meta property="og:image" content="http://example.com/postImg/67aacbd86928784f8feb02a373d148b8.png">
+<meta property="og:image" content="http://example.com/postImg/0f5366a02ae7e7e996bcf58df3d3a4d2.png">
+<meta property="og:image" content="http://example.com/postImg/6cc9e0f38ca77a60bf4f5210910a3ee3.png">
+<meta property="og:image" content="http://example.com/postImg/3f7438c300bd3b1ff5022baea5dbbc4f.png">
+<meta property="og:image" content="http://example.com/postImg/33b07028903c2a2ec77cc19bd381e276.gif">
+<meta property="article:published_time" content="2023-11-04T13:03:56.000Z">
+<meta property="article:modified_time" content="2023-11-04T15:22:44.304Z">
+<meta property="article:author" content="Origami-hui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/postImg/46d330f02ab32c5265d258f124aae2e7.png">
+
+
+<link rel="canonical" href="http://example.com/2023/11/04/oc2unity/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/04/oc2unity/","path":"2023/11/04/oc2unity/","title":"从制作OC形象到导入Unity并让角色动起来"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>从制作OC形象到导入Unity并让角色动起来 | 吴咏辉</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">吴咏辉</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Origami-hui</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-文章"><a href="/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Origami-hui"
+      src="/images/Avatar.jpg">
+  <p class="site-author-name" itemprop="name">Origami-hui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:1700560353@qq.com" title="E-Mail → mailto:1700560353@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/38254734" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;38254734" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/Origamihui" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;Origamihui" rel="noopener me" target="_blank"><i class="fa-solid fa-terminal fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.pixiv.net/users/30962501" title="Pixiv → https:&#x2F;&#x2F;www.pixiv.net&#x2F;users&#x2F;30962501" rel="noopener me" target="_blank"><i class="fa-solid fa-paintbrush fa-fw"></i>Pixiv</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/04/oc2unity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Avatar.jpg">
+      <meta itemprop="name" content="Origami-hui">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吴咏辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="从制作OC形象到导入Unity并让角色动起来 | 吴咏辉">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从制作OC形象到导入Unity并让角色动起来
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-11-04 21:03:56 / 修改时间：23:22:44" itemprop="dateCreated datePublished" datetime="2023-11-04T21:03:56+08:00">2023-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Unity游戏开发</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><span style="font-size: 15px;">
+
+<p>一直想让自己以前设计的oc能变成3d并且让她作为RPG的主角动起来，并且以此为契机熟悉3d建模与游戏开发领域，于是有了标题的这个想法。</p>
+<p>这里记录一下新人第一次从Vroid捏OC，导入blender转fbx，以及导入Unity通过修改官方的Third Person Controller来让角色动起来这个过程中所踩的坑，也顺便整理一下这一路的开发思路。这里许多地方都是参考了各路大佬的教程来进行的，写到的时候也会贴上链接，在这里再次感谢这些大佬~</p>
+<p><strong>使用软件</strong>：Vroid v1.19.0，Blender2.93（3以上的版本安装CATS插件可能会出错），unity2022.1</p>
+<span id="more"></span>
+
+<ul>
+<li><strong>Vroid捏oc，绘制贴图</strong></li>
+</ul>
+<p>首先需要对自己想要捏的形象有个大概的设定，在Vroid可以很方便选择与设定相近的素体并进行贴图纹理绘制，或者直接用现成的贴图，是一个十分好上手的软件，同时vrm的材质渲染比较偏三渲二画风这也是我选择该软件的主要原因。这里主要参考视频BV19L4y157aS，这里主要记录下踩过的坑：</p>
+<ol>
+<li>脸部的头发阴影不要绘制太大，否则闭眼动作的时候可能会出现穿帮。可以拉动闭眼表情查看并进行调节；</li>
+</ol>
+<p><img src="/./postImg/46d330f02ab32c5265d258f124aae2e7.png" alt="600px"></p>
+<ol>
+<li>如果想绘制发饰或者其他部位的饰品又没有想要的素体，一个偷懒的方法是在新建的纹理上直接进行绘制（可以导出纹理图层到ps或者sai等绘画软件进行精修），不过这样不能对饰品做体积，只能说有利有弊吧。</li>
+</ol>
+<p><img src="/./postImg/aa6165cf559d6329bb48b6c5541305cb.png" alt="600px"></p>
+<ol>
+<li>绘制好头发点击<strong>编辑头发骨骼</strong>会自动生成头发骨骼，进入编辑界面可以对不想要绑定骨骼的头发从头发组里删除。这里前发建议骨骼数设为1，不然后面可能会出现乱飘的现象。</li>
+</ol>
+<p><img src="/./postImg/3f133e4a5558bebbe4001873f1f2826d.png" alt="600px"></p>
+<ul>
+<li><strong>导出vrm文件并在blender进行fbx格式转换</strong></li>
+</ul>
+<p>捏好模型之后右上方导出vrm文件即可。为了能顺利导入Unity，这里的做法是先用blender转成fbx格式并合成材质球。教程指路：BV1up4y1S71w。需要安装的插件视频里也有贴。这里主要的踩坑点有：</p>
+<ol>
+<li>导入vrm文件后没有生成对应的材质球。这里不要用插件的导入按钮进行导入，直接从blender菜单进行导入并勾选第一个选项即可。</li>
+</ol>
+<p><img src="/./postImg/6985d1440098811c0a2e0d09aeb4c3cf.png" alt="600px"></p>
+<ol start="2">
+<li>点击Save Atlas to..的时候，没有跳出保存路径选择，并且也没有合并材质而是把其他材质都删了只留了一个下来。</li>
+</ol>
+<p><img src="/./postImg/c49f1d17bdd8419251937ca1e38e14c2.png" alt="200px"></p>
+<p>教程的留言里也有很多人碰到这个问题。这里我的做法是将blender的系统语言<strong>调成英文</strong>，同时vrm文件路径尽量不要出现中文，再来尝试，合并材质就没问题了。如果还是不行就删掉刚刚的blender文件再新建项目再来重试。</p>
+<p>合并好之后点击ExportModel导出fbx文件就好了。</p>
+<p><img src="/./postImg/a3eece2ba2c18e4b25266515a7749e95.png" alt="300px"></p>
+<ul>
+<li><strong>将fbx文件导入Unity并修改Shader</strong></li>
+</ul>
+<p>把模型导入Unity并将合成好的材质球拖入人物，可以看到模型会出现各种黑边，是因为材质球的透明区域被映成了黑色。这里我安装UniVRM（<a target="_blank" rel="noopener" href="https://github.com/vrm-c/UniVRM%EF%BC%89%E4%B9%8B%E5%90%8E%EF%BC%8C%E9%80%89%E6%8B%A9VRM/MToon%E4%BD%9C%E4%B8%BAShader%EF%BC%8C%E5%B9%B6%E5%9C%A8Rendering">https://github.com/vrm-c/UniVRM）之后，选择VRM/MToon作为Shader，并在Rendering</a> Type处选择<strong>Cutout</strong>来保留透明网格，同时可以将Outline（模型的边缘线）调大来尽量还原三渲二的材质。</p>
+<p><img src="/./postImg/e3ddf1cd86b8ee899750fa6f922763b6.png" alt="600px"></p>
+<ul>
+<li><strong>导入Third Person Controller尝试按键操作角色</strong></li>
+</ul>
+<p>成功导入Unity只是完成的第一步，接下来如何让角色在我们的操作下动起来才会让事情变得有趣。这里我选择使用官方的第三人称控制器来操作角色。</p>
+<p>资源链接：<a target="_blank" rel="noopener" href="https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526#reviews">https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526#reviews</a></p>
+<p>导入资源之后将资源文件Scene&#x2F;Playground场景下的小人与跟随相机复制到你的场景下。然后将你的角色的骨骼与皮肤文件（Armture、Body）搬到小人的文件下并删除掉小人本身的骨骼与皮肤：</p>
+<p><img src="/./postImg/7fce9eac332698ae7aed4a6ecdfae2a8.png" alt="300px"></p>
+<p>然后将控制器与你的角色的Avatar赋予人物即可。</p>
+<p><img src="/./postImg/8708c476c1a9130148c50705b413246a.png" alt="600px"></p>
+<p>这个时候点击运行用键盘操作一下角色应该就能动起来了。虽然动作可能会十分奇怪，这是因为动画绑定的骨骼与模型的骨骼不匹配，修改教程指路：BV1fg411w7HT。如果对动作本身不满意，这里提到的网站（<a target="_blank" rel="noopener" href="https://www.mixamo.com/%EF%BC%89%E9%87%8C%E4%B9%9F%E6%9C%89%E8%AE%B8%E5%A4%9A%E5%8A%A8%E4%BD%9C%E7%B4%A0%E6%9D%90%E5%8F%AF%E4%BB%A5%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%AF%BC%E5%85%A5%E5%90%8E%E4%BF%AE%E6%94%B9Rig%E7%9A%84%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B%E4%B8%BA**Humanoid">https://www.mixamo.com/）里也有许多动作素材可以下载，导入后修改Rig的动画类型为**Humanoid</a>**</p>
+<p><img src="/./postImg/67aacbd86928784f8feb02a373d148b8.png" alt="300px"></p>
+<p>然后在Controller的状态机里将原动作替换掉，并按照视频的方法调整下骨骼即可。如替换跑步动作：</p>
+<p><img src="/./postImg/0f5366a02ae7e7e996bcf58df3d3a4d2.png" alt="600px"></p>
+<br>
+
+<ul>
+<li><strong>让角色头发随动</strong></li>
+</ul>
+<p>让角色动起来之后发现头发并不会随着飘动起来而是保持着原来的形状移动着，这时需要给头发添加一个动态骨骼。Unity插件链接：</p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/11Pth4d1oynVl5gXyngs29w">https://pan.baidu.com/s/11Pth4d1oynVl5gXyngs29w</a> 提取码：fang</p>
+<p>导入插件后找到角色的头发所在的父级目录，在上面添加<strong>Dynamic Bone</strong>组件即可自动生成动态骨骼，调整Damping、Elasticity等参数让其飘动更加自然（我的参数如下图）。在Colliders栏可以添加骨骼碰撞体尽量防止头发穿模。Exclusions栏可以添加父级目录下不想添加动态骨骼的物件（如在Head文件下的眼睛、碎发等）</p>
+<p><img src="/./postImg/6cc9e0f38ca77a60bf4f5210910a3ee3.png" alt="600px"></p>
+<ul>
+<li><strong>给新动作添加走路音效</strong></li>
+</ul>
+<p>由于新替换的动作没有添加触发音效事件，如替换掉走路的动作后，走起路来原本挂载在ThirdPerson Controller脚本的音效就不会触发。进到脚本我们可以看到官方自带的有两种音效触发的方法，OnFootstep是走路或跑步触发音效事件，OnLand是人物落地触发音效事件。这里我修改了走路的动作，因此要给新动作添加回OnFootstep事件。</p>
+<p>具体的添加方式为：</p>
+<p><img src="/./postImg/3f7438c300bd3b1ff5022baea5dbbc4f.png" alt="600px"></p>
+<p>在动作文件的Animation&#x2F;Events设置中的时间轴出选中两次脚落地的时刻，添加事件即可。</p>
+<p><img src="/./postImg/33b07028903c2a2ec77cc19bd381e276.gif" alt="600px"></p>
+<br>
+
+<p>完成这些操作之后，制作的oc形象终于能比较顺心地动起来啦，虽然还有很多细节还需要调整，但还是想记录这么一个文档让自己爽一下。后面就可以操作你的角色进行你的RPG游戏啦，谢谢你能看到这里~</p>
+</span>
+
+<style>
+    img[alt="300px"]{
+        width:300px;
+    }
+
+    img[alt="400px"]{
+        width:400px;
+    }
+
+    img[alt="500px"]{
+        width:500px;
+    }
+
+    img[alt="600px"]{
+        width:600px;
+    }
+
+    img[alt="800px"]{
+        width:800px;
+    }
+</style>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/03/words1/" rel="prev" title="自制锁定怪物镜头与自由镜头丝滑切换">
+                  <i class="fa fa-angle-left"></i> 自制锁定怪物镜头与自由镜头丝滑切换
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/04/test/" rel="next" title="test">
+                  test <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa-solid fa-star"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Origami-hui</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">16k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">29 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
