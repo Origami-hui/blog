@@ -84,7 +84,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-文章"><a href="/blog/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/blog/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-文章"><a href="/blog/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/blog/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2023/11/04/test/" class="post-title-link" itemprop="url">test</a>
+          <a href="/blog/2023/11/04/test/" class="post-title-link" itemprop="url">一种基于状态机的敌人AI系统简单实现</a>
         </h2>
 
         <div class="post-meta-container">
@@ -208,9 +208,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-11-04 22:25:17 / 修改时间：23:17:35" itemprop="dateCreated datePublished" datetime="2023-11-04T22:25:17+08:00">2023-11-04</time>
+      <time title="创建时间：2023-11-04 22:25:17" itemprop="dateCreated datePublished" datetime="2023-11-04T22:25:17+08:00">2023-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-24 23:43:46" itemprop="dateModified" datetime="2024-01-24T23:43:46+08:00">2024-01-24</time>
     </span>
 
   
@@ -220,14 +226,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>30</span>
+      <span>19k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>35 分钟</span>
     </span>
 </div>
 
@@ -239,6 +245,8 @@
     
     <div class="post-body" itemprop="articleBody">
           <span style="font-size: 15px;">
+
+<p>游戏开发中经常涉及怪物、敌人的行为设计，在战斗中为敌人设计合理、丰富的行为逻辑，可以使得敌人的反应更加真实，也更增加玩家对于游戏的沉浸感。而不同的怪物设定、游戏类型、设计需求会产生出各种各样的AI系统，其中解放方案也比较多，大致可以分为 <strong>有限状态机和行为树</strong> 两大类（考虑到稳定性和系统性能，基于机器学习、深度学习等更“智能”的实现方式尚未在大型商业游戏实现 [1]，而其广泛应用我觉得也是未来AI发展的趋势之一），而两者各有利弊，需要根据不同的业务场景选择不同的实现方案。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2023/11/04/test/#more" rel="contents">
@@ -522,7 +530,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-04 23:06:20" itemprop="dateModified" datetime="2023-11-04T23:06:20+08:00">2023-11-04</time>
+      <time title="修改时间：2024-01-24 20:40:15" itemprop="dateModified" datetime="2024-01-24T20:40:15+08:00">2024-01-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -561,7 +569,7 @@
     <div class="post-body" itemprop="articleBody">
           <span style="font-size: 15px;">
 
-<p>最近在研1究Unity中多人游戏的实现，要保证在同一游戏里不同玩家所用的客户端之间的状态保持同步，需要配置统一的服务器来分发玩家状态的列表，以在客户端完成多人状态的更新。</p>
+<p>最近在研究Unity中多人游戏的实现，要保证在同一游戏里不同玩家所用的客户端之间的状态保持同步，需要配置统一的服务器来分发玩家状态的列表，以在客户端完成多人状态的更新。</p>
 <p>做一个小的联机Demo，传输玩家的 <strong>位置、水平转角，动画状态</strong> 等信息，通信的逻辑是当客户端将玩家的信息更新到服务端的同时，将状态信息储存在服务端，服务端再响应给客户端当前游戏所有玩家的状态信息列表。</p>
 <p>为什么要用Java的SpringBoot框架来搭服务器呢，是由于最近刚好学了Java和SpringBoot的一些知识，想着自己动手熟悉一下，当然如果有大佬能指出一些不足的地方就更好啦。网上找了一些SpringBoot集成WebSocket的用例之后，直接开干！</p>
 <p>先来看看效果吧:</p>
@@ -599,7 +607,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa-solid fa-star"></i>
     </span>
@@ -610,13 +618,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">35k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">29 分钟</span>
+    <span title="站点阅读时长">1:04</span>
   </span>
 </div>
 
