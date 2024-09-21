@@ -5,42 +5,42 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/Iron.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/Iron.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/Iron.png">
-  <link rel="mask-icon" href="/blog/images/Iron.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Iron.png">
+  <link rel="mask-icon" href="/images/Iron.png" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"origami-hui.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"origami-hui.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 Souls-like Part 155 Lock On Logic - Unity Tutorial 来自己制作镜头和镜头切换了，这里就大">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自制锁定怪物镜头与自由镜头丝滑切换">
-<meta property="og:url" content="https://origami-hui.gitee.io/blog/2023/11/03/words1/index.html">
+<meta property="og:url" content="https://origami-hui.github.io/2023/11/03/words1/index.html">
 <meta property="og:site_name" content="吴咏辉">
 <meta property="og:description" content="Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 Souls-like Part 155 Lock On Logic - Unity Tutorial 来自己制作镜头和镜头切换了，这里就大">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/unity1.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/unity2.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/c04ebebbce334c59b24cb8cc6d3301bb.gif">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/unity1.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/unity2.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/c04ebebbce334c59b24cb8cc6d3301bb.gif">
 <meta property="article:published_time" content="2023-11-03T03:52:37.000Z">
 <meta property="article:modified_time" content="2024-09-21T13:40:32.032Z">
 <meta property="article:author" content="Origami-hui">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://origami-hui.gitee.io/blog/postImg/unity1.png">
+<meta name="twitter:image" content="https://origami-hui.github.io/blog/postImg/unity1.png">
 
 
-<link rel="canonical" href="https://origami-hui.gitee.io/blog/2023/11/03/words1/">
+<link rel="canonical" href="https://origami-hui.github.io/2023/11/03/words1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://origami-hui.gitee.io/blog/2023/11/03/words1/","path":"2023/11/03/words1/","title":"自制锁定怪物镜头与自由镜头丝滑切换"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://origami-hui.github.io/2023/11/03/words1/","path":"2023/11/03/words1/","title":"自制锁定怪物镜头与自由镜头丝滑切换"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>自制锁定怪物镜头与自由镜头丝滑切换 | 吴咏辉</title>
@@ -54,7 +54,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/blog/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -74,7 +74,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">吴咏辉</p>
       <i class="logo-line"></i>
@@ -92,7 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-文章"><a href="/blog/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/blog/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-文章"><a href="/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -149,7 +149,7 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Origami-hui"
-      src="/blog/images/Avatar.jpg">
+      src="/images/Avatar.jpg">
   <p class="site-author-name" itemprop="name">Origami-hui</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -189,10 +189,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://origami-hui.gitee.io/blog/2023/11/03/words1/">
+    <link itemprop="mainEntityOfPage" href="https://origami-hui.github.io/2023/11/03/words1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/Avatar.jpg">
+      <meta itemprop="image" content="/images/Avatar.jpg">
       <meta itemprop="name" content="Origami-hui">
     </span>
 
@@ -233,7 +233,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Unity%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Unity游戏开发</span></a>
+          <a href="/categories/Unity%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Unity游戏开发</span></a>
         </span>
     </span>
 
@@ -355,7 +355,7 @@
             <div class="post-nav-item">
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2023/11/04/oc2unity/" rel="next" title="从制作OC形象到导入Unity并让角色动起来">
+                <a href="/2023/11/04/oc2unity/" rel="next" title="从制作OC形象到导入Unity并让角色动起来">
                   从制作OC形象到导入Unity并让角色动起来 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -414,10 +414,10 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/blog/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

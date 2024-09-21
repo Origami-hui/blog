@@ -5,53 +5,53 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/Iron.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/Iron.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/Iron.png">
-  <link rel="mask-icon" href="/blog/images/Iron.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Iron.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Iron.png">
+  <link rel="mask-icon" href="/images/Iron.png" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"origami-hui.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"origami-hui.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":false,"post_block":"fadeIn","post_header":false,"post_body":false,"coll_header":false,"sidebar":false}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="游戏开发中经常涉及怪物、敌人的行为设计，在战斗中为敌人设计合理、丰富的行为逻辑，可以使得敌人的反应更加真实，也更增加玩家对于游戏的沉浸感。而不同的怪物设定、游戏类型、设计需求会产生出各种各样的AI系统，其中解放方案也比较多，大致可以分为 有限状态机和行为树 两大类（考虑到稳定性和系统性能，基于机器学习、深度学习等更“智能”的实现方式尚未在大型商业游戏实现 [1]，而其广泛应用我觉得也是未来AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一种基于状态机的敌人AI系统简单实现">
-<meta property="og:url" content="https://origami-hui.gitee.io/blog/2023/11/04/test/index.html">
+<meta property="og:url" content="https://origami-hui.github.io/2023/11/04/test/index.html">
 <meta property="og:site_name" content="吴咏辉">
 <meta property="og:description" content="游戏开发中经常涉及怪物、敌人的行为设计，在战斗中为敌人设计合理、丰富的行为逻辑，可以使得敌人的反应更加真实，也更增加玩家对于游戏的沉浸感。而不同的怪物设定、游戏类型、设计需求会产生出各种各样的AI系统，其中解放方案也比较多，大致可以分为 有限状态机和行为树 两大类（考虑到稳定性和系统性能，基于机器学习、深度学习等更“智能”的实现方式尚未在大型商业游戏实现 [1]，而其广泛应用我觉得也是未来AI">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image2.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image10.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image3.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image4.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image5.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image6.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image7.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image8.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/image9.png">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/12-00-522024119133241.gif">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/13-00-0720241191317511.gif">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/13-00-0720241191318282.gif">
-<meta property="og:image" content="https://origami-hui.gitee.io/blog/postImg/13-00-0720241191319483.gif">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image2.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image10.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image3.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image4.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image5.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image6.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image7.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image8.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/image9.png">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/12-00-522024119133241.gif">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/13-00-0720241191317511.gif">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/13-00-0720241191318282.gif">
+<meta property="og:image" content="https://origami-hui.github.io/blog/postImg/13-00-0720241191319483.gif">
 <meta property="article:published_time" content="2023-11-04T14:25:17.000Z">
 <meta property="article:modified_time" content="2024-09-21T13:40:32.032Z">
 <meta property="article:author" content="Origami-hui">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://origami-hui.gitee.io/blog/postImg/image.png">
+<meta name="twitter:image" content="https://origami-hui.github.io/blog/postImg/image.png">
 
 
-<link rel="canonical" href="https://origami-hui.gitee.io/blog/2023/11/04/test/">
+<link rel="canonical" href="https://origami-hui.github.io/2023/11/04/test/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://origami-hui.gitee.io/blog/2023/11/04/test/","path":"2023/11/04/test/","title":"一种基于状态机的敌人AI系统简单实现"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://origami-hui.github.io/2023/11/04/test/","path":"2023/11/04/test/","title":"一种基于状态机的敌人AI系统简单实现"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>一种基于状态机的敌人AI系统简单实现 | 吴咏辉</title>
@@ -65,7 +65,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/blog/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -85,7 +85,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">吴咏辉</p>
       <i class="logo-line"></i>
@@ -103,7 +103,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-文章"><a href="/blog/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/blog/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-文章"><a href="/words/" rel="section"><i class="fa-solid fa-newspaper fa-fw"></i>文章</a></li><li class="menu-item menu-item-画廊"><a href="/pices/" rel="section"><i class="fa-solid fa-image fa-fw"></i>画廊</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-archive fa-fw"></i>分类</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -160,7 +160,7 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Origami-hui"
-      src="/blog/images/Avatar.jpg">
+      src="/images/Avatar.jpg">
   <p class="site-author-name" itemprop="name">Origami-hui</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -200,10 +200,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://origami-hui.gitee.io/blog/2023/11/04/test/">
+    <link itemprop="mainEntityOfPage" href="https://origami-hui.github.io/2023/11/04/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/Avatar.jpg">
+      <meta itemprop="image" content="/images/Avatar.jpg">
       <meta itemprop="name" content="Origami-hui">
     </span>
 
@@ -407,12 +407,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2023/11/04/oc2unity/" rel="prev" title="从制作OC形象到导入Unity并让角色动起来">
+                <a href="/2023/11/04/oc2unity/" rel="prev" title="从制作OC形象到导入Unity并让角色动起来">
                   <i class="fa fa-angle-left"></i> 从制作OC形象到导入Unity并让角色动起来
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2024/09/21/words/" rel="next" title="为Unity游戏搭建SpringBoot的服务端实现多人同步">
+                <a href="/2024/09/21/words/" rel="next" title="为Unity游戏搭建SpringBoot的服务端实现多人同步">
                   为Unity游戏搭建SpringBoot的服务端实现多人同步 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -471,10 +471,10 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/blog/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
