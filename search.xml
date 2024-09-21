@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>从制作OC形象到导入Unity并让角色动起来</title>
-    <url>/2023/11/04/oc2unity/</url>
+    <url>/blog/2023/11/04/oc2unity/</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <p>一直想让自己以前设计的oc能变成3d并且让她作为RPG的主角动起来，并且以此为契机熟悉3d建模与游戏开发领域，于是有了标题的这个想法。</p>
@@ -108,7 +108,7 @@
   </entry>
   <entry>
     <title>一种基于状态机的敌人AI系统简单实现</title>
-    <url>/2023/11/04/test/</url>
+    <url>/blog/2023/11/04/test/</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <p>游戏开发中经常涉及怪物、敌人的行为设计，在战斗中为敌人设计合理、丰富的行为逻辑，可以使得敌人的反应更加真实，也更增加玩家对于游戏的沉浸感。而不同的怪物设定、游戏类型、设计需求会产生出各种各样的AI系统，其中解放方案也比较多，大致可以分为 <strong>有限状态机和行为树</strong> 两大类（考虑到稳定性和系统性能，基于机器学习、深度学习等更“智能”的实现方式尚未在大型商业游戏实现 [1]，而其广泛应用我觉得也是未来AI发展的趋势之一），而两者各有利弊，需要根据不同的业务场景选择不同的实现方案。</p>
@@ -244,7 +244,7 @@
   </entry>
   <entry>
     <title>为Unity游戏搭建SpringBoot的服务端实现多人同步</title>
-    <url>/2024/09/21/words/</url>
+    <url>/blog/2024/09/21/words/</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <p>最近在研究Unity中多人游戏的实现，要保证在同一游戏里不同玩家所用的客户端之间的状态保持同步，需要配置统一的服务器来分发玩家状态的列表，以在客户端完成多人状态的更新。</p>
@@ -330,7 +330,7 @@
   </entry>
   <entry>
     <title>自制锁定怪物镜头与自由镜头丝滑切换</title>
-    <url>/2023/11/03/words1/</url>
+    <url>/blog/2023/11/03/words1/</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <p>Unity中，在开发战斗系统的时候需要镜头从第三人称自由镜头切换到锁定怪物镜头的情况，从而使得玩家方便进行战斗与自由移动。用Cinemachine虚拟相机的LookAt来进行锁定的效果始终不符合预期（也可能是我没有调到合适的参数），于是就试着参考网上的教程 <a href="https://www.youtube.com/watch?v=ud3_tderJOQ">Souls-like Part 155 Lock On Logic - Unity Tutorial</a> 来自己制作镜头和镜头切换了，这里就大概记录一下吧：</p>
@@ -417,7 +417,7 @@
   </entry>
   <entry>
     <title>欢迎光临</title>
-    <url>/index.html</url>
+    <url>/blog/index.html</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <h3 id="这里有什么"><a href="#这里有什么" class="headerlink" title="这里有什么"></a>这里有什么</h3><br/>
@@ -463,7 +463,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>/pices/index.html</url>
+    <url>/blog/pices/index.html</url>
     <content><![CDATA[<span style="font-size: 15px;">
 
 <div style="font-size: 18px; text-align: center;" >这里放一些感觉还算看得过去的画作，希望自己以后也能一直坚持对绘画的热爱吧~</div>
@@ -568,7 +568,7 @@
   </entry>
   <entry>
     <title>about</title>
-    <url>/about/index.html</url>
+    <url>/blog/about/index.html</url>
     <content><![CDATA[<span style="font-size: 14px;">
 
 <p>两辆汽车必须要同时决定如何应对道路上的突然障碍物。</p>
@@ -580,13 +580,13 @@
   </entry>
   <entry>
     <title>words</title>
-    <url>/words/index.html</url>
+    <url>/blog/words/index.html</url>
     <content><![CDATA[<p>这里显示的内容无效，改页显示_post下的内容</p>
 ]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/categories/index.html</url>
+    <url>/blog/categories/index.html</url>
     <content><![CDATA[<p>这里是分类页</p>
 ]]></content>
   </entry>
